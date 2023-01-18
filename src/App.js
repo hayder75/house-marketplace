@@ -9,6 +9,8 @@ import Category from './pages/Category'
 import Profile from './pages/Profile'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import Listing from './pages/Listing'
+import Contact from './pages/Contact'
 import ForgotPassword from './pages/ForgotPassword'
 import CreateListing from './pages/CreateListing'
 
@@ -27,7 +29,12 @@ function App() {
           <Route path='/sign-in' element={<SignIn />} />
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/forgot-password' element={<ForgotPassword />} />
+          <Route path='/contact/:landlordId' element={<Contact />} />
           <Route path='/create-listing' element={<CreateListing />} />
+          <Route
+            path='/category/:categoryName/:listingsId'
+            element={<Listing />}
+          />
         </Routes>
         <Navbar />
       </Router>
