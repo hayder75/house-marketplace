@@ -1,17 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { Helmet } from 'react-helmet'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/swiper-bundle.css'
+import Slideshow from '../componets/Slideshow'
 import { getDoc, doc } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
 import { db } from '../firebase.config'
-import Spinner from '../components/Spinner'
+import Spinner from '../componets/Spinner'
 import shareIcon from '../assets/svg/shareIcon.svg'
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
-
 function Listing() {
   const [listing, setListing] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -41,22 +36,7 @@ function Listing() {
 
   return (
     <main>
-      <Helmet>
-        <title>{listing.name}</title>
-      </Helmet>
-      <Swiper slidesPerView={1} pagination={{ clickable: true }}>
-        {listing.imgUrls.map((url, index) => (
-          <SwiperSlide key={index}>
-            <div
-              style={{
-                background: `url(${listing.imgUrls[index]}) center no-repeat`,
-                backgroundSize: 'cover',
-              }}
-              className='swiperSlideDiv'
-            ></div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+
 
       <div
         className='shareIconDiv'
@@ -72,7 +52,7 @@ function Listing() {
       </div>
 
       {shareLinkCopied && <p className='linkCopied'>Link Copied!</p>}
-
+          <div> <Slideshow/></div>
       <div className='listingDetails'>
         <p className='listingName'>
           {listing.name} - $
@@ -144,5 +124,6 @@ function Listing() {
   )
 }
 
-export default Listing 
+export default Listing
+
 // https://stackoverflow.com/questions/67552020/how-to-fix-error-failed-to-compile-node-modules-react-leaflet-core-esm-pat

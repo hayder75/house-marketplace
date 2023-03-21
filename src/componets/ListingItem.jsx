@@ -23,7 +23,7 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
           <p className='categoryListingPrice'>
             $
             {listing.offer
-              ? listing.dicountedPrice
+              ? listing.discountedPrice
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
               : listing.regularPrice
@@ -55,7 +55,7 @@ function ListingItem({ listing, id, onEdit, onDelete }) {
           onClick={() => onDelete(listing.id, listing.name)}
         />
       )}
-
+   {onEdit && <EditIcon className='editIcon' onClick={() => onEdit(id)} />}
        </li>
   )
 }
